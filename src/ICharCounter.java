@@ -1,6 +1,3 @@
-
-
-
 /**
  * An interface for initializing and retrieving chunk/character
  * counts. 
