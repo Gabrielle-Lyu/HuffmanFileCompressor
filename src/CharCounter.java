@@ -7,7 +7,6 @@ public class CharCounter implements ICharCounter{
     private Map<Integer,Integer> frequencyTable;
     public CharCounter() {
         this.frequencyTable = new HashMap<>();
-
     }
     @Override
     public int getCount(int ch) {
