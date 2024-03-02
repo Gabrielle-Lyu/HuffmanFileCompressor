@@ -1,6 +1,5 @@
-
 public class HuffTree
-    implements Comparable
+        implements Comparable
 {
     private IHuffBaseNode root;
 
@@ -81,7 +80,7 @@ public class HuffTree
         if (n instanceof HuffLeafNode)
             return 10;
         return 1 + size(((HuffInternalNode)n).left())
-            + size(((HuffInternalNode)n).right());
+                + size(((HuffInternalNode)n).right());
     }
 
 

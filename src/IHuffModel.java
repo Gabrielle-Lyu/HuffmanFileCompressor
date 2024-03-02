@@ -1,7 +1,5 @@
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.Map;
-import java.io.File;
+import java.io.*;
+
 /**
  * The interface for the model that can be attached to a HuffmanView. Most of
  * the work done in huffing (and unhuffing) will be via a class that implements
@@ -15,8 +13,7 @@ import java.io.File;
 
 
 public interface IHuffModel
-    extends IHuffConstants
-{
+    extends IHuffConstants {
     
 
     /**
@@ -31,7 +28,7 @@ public interface IHuffModel
      * @param force  indicates if compression forced
      * @return the size of the compressed file
      */
-    public int write(String inFile, String outFile, boolean force);
+    public int write(String inFile, String outFile, boolean force) throws IOException;
 
 
     /**

@@ -7,8 +7,7 @@
  * @author ericfouh
  * @version Mar 16, 2016
  */
-public interface IHuffBaseNode extends Comparable
-{
+public interface IHuffBaseNode extends Comparable {
     // ----------------------------------------------------------
     /**
      * Place a description of your method here.

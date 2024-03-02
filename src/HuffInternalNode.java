@@ -8,16 +8,14 @@
  * @version Mar 16, 2016
  */
 public class HuffInternalNode
-    implements IHuffBaseNode
-{
+    implements IHuffBaseNode {
     private int           weight;
     private IHuffBaseNode left;
     private IHuffBaseNode right;
 
 
     /** Constructor */
-    HuffInternalNode(IHuffBaseNode l, IHuffBaseNode r, int wt)
-    {
+    HuffInternalNode(IHuffBaseNode l, IHuffBaseNode r, int wt) {
         left = l;
         right = r;
         weight = wt;
@@ -25,8 +23,7 @@ public class HuffInternalNode
 
 
     /** @return The left child */
-    IHuffBaseNode left()
-    {
+    IHuffBaseNode left() {
         return left;
     }
 
@@ -37,15 +34,13 @@ public class HuffInternalNode
      *
      * @param l
      */
-    public void setLeft(IHuffBaseNode l)
-    {
+    public void setLeft(IHuffBaseNode l) {
         left = l;
     }
 
 
     /** @return The right child */
-    IHuffBaseNode right()
-    {
+    IHuffBaseNode right() {
         return right;
     }
 
@@ -55,34 +50,31 @@ public class HuffInternalNode
      * Place a description of your method here.
      * @param r
      */
-    public void setRight(IHuffBaseNode r)
-    {
+    public void setRight(IHuffBaseNode r) {
         right = r;
     }
 
 
     @Override
-    public boolean isLeaf()
-    {
+    public boolean isLeaf() {
 
         return false;
     }
 
 
     @Override
-    public int weight()
-    {
+    public int weight() {
 
         return weight;
     }
 
 
     @Override
-    public int compareTo(Object o)
-    {
+    public int compareTo(Object o) {
         // TODO Auto-generated method stub
-        if (o instanceof HuffInternalNode)
+        if (o instanceof HuffInternalNode) {
             return this.weight() - ((HuffInternalNode)o).weight();
+        }
         return 0;
     }
 

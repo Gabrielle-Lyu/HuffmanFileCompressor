@@ -18,8 +18,7 @@
 
 import java.io.*;
 
-public class BitOutputStream extends OutputStream
-{
+public class BitOutputStream extends OutputStream {
     
 
     private OutputStream  myOutput;
@@ -49,12 +48,12 @@ public class BitOutputStream extends OutputStream
      * passed as a parameter.
      * @param out is the output stream to which bits are written
      */
-    public BitOutputStream(OutputStream out){
+    public BitOutputStream(OutputStream out) {
         myOutput = out;
         initialize();
     }
     
-    private void initialize(){
+    private void initialize() {
         myBuffer = 0;
         myBitsToGo = BITS_PER_BYTE;
     }
@@ -65,15 +64,12 @@ public class BitOutputStream extends OutputStream
      * @throws RuntimeException if opening file fails for either FileNotFound
      * or for Security exceptoins
      */
-    public BitOutputStream(String filename)
-    {
-        try{
+    public BitOutputStream(String filename) {
+        try {
             myOutput = new BufferedOutputStream(new FileOutputStream(filename)); 
-        }
-        catch (FileNotFoundException fnf){
+        } catch (FileNotFoundException fnf) {
             throw new RuntimeException("could not create " + filename + " " + fnf);
-        }
-        catch(SecurityException se){
+        } catch (SecurityException se) {
             throw new RuntimeException("security exception on write " + se);
         }
         initialize();
@@ -85,23 +81,20 @@ public class BitOutputStream extends OutputStream
      * programs if <code>close</code> isn't called.
      * @throws RuntimeException if there's a problem writing bits
      */
-    public void flush()
-    {
+    public void flush() {
         if (myBitsToGo != BITS_PER_BYTE) {
-            try{
-                write( (myBuffer << myBitsToGo) );
-            }
-            catch (java.io.IOException ioe){
+            try {
+                write((myBuffer << myBitsToGo));
+            } catch (java.io.IOException ioe) {
                 throw new RuntimeException("error writing bits on flush " + ioe);
             }
             myBuffer = 0;
             myBitsToGo = BITS_PER_BYTE;
         }
                 
-        try{
+        try {
             myOutput.flush();    
-        }
-        catch (java.io.IOException ioe){
+        } catch (java.io.IOException ioe) {
             throw new RuntimeException("error on flush " + ioe);
         }
     }
@@ -112,13 +105,11 @@ public class BitOutputStream extends OutputStream
      * or flush must be called or not all bits will be written
      * @throws RuntimeException if close fails
      */
-    public void close()
-    {
+    public void close() {
         flush();
-        try{
+        try {
             myOutput.close();
-        }
-        catch (IOException ioe){
+        } catch (IOException ioe) {
             throw new RuntimeException("error closing BitOutputStream " + ioe);
         }
     }
@@ -130,17 +121,15 @@ public class BitOutputStream extends OutputStream
      * @throws RuntimeException if there's an I/O problem writing bits
      */
     
-    public void write(int howManyBits, int value)
-    {
+    public void write(int howManyBits, int value) {
         value &= bmask[howManyBits];  // only right most bits valid
 
-        while (howManyBits >= myBitsToGo){
+        while (howManyBits >= myBitsToGo) {
             myBuffer = (myBuffer << myBitsToGo) |
                        (value >> (howManyBits - myBitsToGo));
-            try{
+            try {
                 write(myBuffer);    
-            }
-            catch (java.io.IOException ioe){
+            } catch (java.io.IOException ioe) {
                 throw new RuntimeException("error writing bits " + ioe);
             }
 

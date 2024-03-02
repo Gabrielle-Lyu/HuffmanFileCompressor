@@ -13,7 +13,7 @@ public class CharCounterTest {
     public void testGetCount() throws IOException {
         InputStream ins = new ByteArrayInputStream("teststring".getBytes("UTF-8"));
         int actualSize = counter.countAll(ins);
-        assertEquals(10, actualSize );
+        assertEquals(10, actualSize);
         assertEquals(3, counter.getCount('t'));
     }
 
@@ -21,7 +21,7 @@ public class CharCounterTest {
     public void testCountAll() throws IOException {
         InputStream ins = new ByteArrayInputStream("teststring".getBytes("UTF-8"));
         int actualSize = counter.countAll(ins);
-        assertEquals(10, actualSize );
+        assertEquals(10, actualSize);
         assertEquals(3, counter.getCount('t'));
         assertEquals(1, counter.getCount('e'));
         assertEquals(2, counter.getCount('s'));
@@ -61,7 +61,6 @@ public class CharCounterTest {
         InputStream ins = new ByteArrayInputStream("abcabcbbb".getBytes("UTF-8"));
         counter.countAll(ins);
         Map<Integer,Integer> map = counter.getTable();
-        System.out.println(map);
         assertEquals(Integer.valueOf(5),map.get((int)'b'));
         assertEquals(Integer.valueOf(2),map.get((int)'a'));
         assertEquals(Integer.valueOf(2),map.get((int)'c'));

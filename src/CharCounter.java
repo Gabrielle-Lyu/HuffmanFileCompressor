@@ -3,7 +3,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CharCounter implements ICharCounter{
+public class CharCounter implements ICharCounter {
     private Map<Integer,Integer> frequencyTable;
     public CharCounter() {
         this.frequencyTable = new HashMap<>();
@@ -18,11 +18,11 @@ public class CharCounter implements ICharCounter{
         clear();
         int currentChar;
         int count = 0;
-        while ((currentChar = stream.read()) != -1){
+        while ((currentChar = stream.read()) != -1) {
             add(currentChar);
             count ++;
         }
-        add(IHuffConstants.PSEUDO_EOF);
+//        add(IHuffConstants.PSEUDO_EOF);
         return count;
     }
 
@@ -38,7 +38,7 @@ public class CharCounter implements ICharCounter{
 
     @Override
     public void clear() {
-        frequencyTable.clear();
+        frequencyTable.replaceAll((key, value) -> 0);;
     }
 
     @Override
